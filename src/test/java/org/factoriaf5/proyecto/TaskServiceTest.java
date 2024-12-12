@@ -24,7 +24,6 @@ public class TaskServiceTest {
     @InjectMocks
     private TaskService taskService;
 
-    // Test createNewTask
     @Test
     public void testCreateNewTask() {
         Task task = new Task("Tarea 1", false);
@@ -34,7 +33,6 @@ public class TaskServiceTest {
         assertEquals(task, result);
     }
 
-    // Test getAllTask
     @Test
     public void testGetAllTask() {
         List<Task> tasks = new ArrayList<>();
@@ -46,7 +44,6 @@ public class TaskServiceTest {
         assertEquals(tasks, result);
     }
 
-    // Test findTaskById
     @SuppressWarnings("deprecation")
     @Test
     public void testFindTaskById() {
@@ -58,7 +55,6 @@ public class TaskServiceTest {
         assertEquals(task, result);
     }
 
-    // Test findAllCompletedTask
     @Test
     public void testFindAllCompletedTask() {
         List<Task> tasks = new ArrayList<>();
@@ -70,7 +66,6 @@ public class TaskServiceTest {
         assertEquals(tasks, result);
     }
 
-    // Test findAllInCompleteTask
     @Test
     public void testFindAllInCompleteTask() {
         List<Task> tasks = new ArrayList<>();

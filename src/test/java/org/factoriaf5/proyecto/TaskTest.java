@@ -1,8 +1,8 @@
 package org.factoriaf5.proyecto;
 
 import org.factoriaf5.proyecto.models.Task;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class TaskTest {
 
@@ -42,7 +42,7 @@ public class TaskTest {
     @Test
     public void testGetId() {
         Task task = new Task("Tarea 1", false);
-        assertEquals(null, task.getId()); // El id se genera automáticamente en la base de datos
+        assertEquals(null, task.getId()); 
     }
 
     @Test

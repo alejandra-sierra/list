@@ -14,7 +14,7 @@ public class TaskServlet extends HttpServlet {
     private final TaskDAO taskDAO = new TaskDAO();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Task> tasks = taskDAO.getAllTasks();
         request.setAttribute("tasks", tasks);
         RequestDispatcher dispatcher = request.getRequestDispatcher("tasks.jsp");

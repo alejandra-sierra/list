@@ -1,0 +1,90 @@
+import org.factoriaf5.proyecto.connection.TaskDAO;
+import org.factoriaf5.proyecto.models.Task;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+public class TaskDAOTest {
+
+    @Mock
+    private Connection connection;
+
+    @Mock
+    private PreparedStatement statement;
+
+    @Mock
+    private ResultSet resultSet;
+
+    @InjectMocks
+    private TaskDAO taskDAO;
+
+    @BeforeEach
+    public void setup() throws SQLException {
+        when(connection.prepareStatement(any())).thenReturn(statement);
+        when(statement.executeQuery()).thenReturn(resultSet);
+        when(statement.executeUpdate()).thenReturn(1);
+    }
+
+    @Test
+    public void testGetAllTasks() throws SQLException {
+        // Arrange
+        List<Task> tasks = new ArrayList<>();
+        tasks.add(new Task(1, "Tarea 1", false));
+        tasks.add(new Task(2, "Tarea 2", true));
+
+        when(resultSet.next()).thenReturn(true, true, false);
+        when(resultSet.getInt("id")).thenReturn(1, 2);
+        when(resultSet.getString("description")).thenReturn("Tarea 1", "Tarea 2");
+        when(resultSet.getBoolean("completed")).thenReturn(false, true);
+
+        // Act
+        List<Task> result = taskDAO.getAllTasks();
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals(tasks.get(0), result.get(0));
+        assertEquals(tasks.get(1), result.get(1));
+    }
+
+    @Test
+    public void testAddTask() throws SQLException {
+        // Arrange
+        String description = "Tarea 3";
+
+        // Act
+        taskDAO.addTask(description);
+
+        // Assert
+        assertEquals(1, taskDAO.getAllTasks().size());
+    }
+
+    @Test
+    public void testDeleteTask() throws SQLException {
+        // Arrange
+        int id = 1;
+
+        // Act
+        taskDAO.deleteTask(id);
+
+        // Assert
+        assertEquals(0, taskDAO.getAllTasks().size());
+    }
+}

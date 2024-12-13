@@ -12,6 +12,7 @@ import java.util.List;
 import org.factoriaf5.proyecto.models.Task;
 
 public class TaskDAO {
+    @SuppressWarnings("CallToPrintStackTrace")
     public List<Task> getAllTasks() {
         List<Task> tasks = new ArrayList<>();
         try (Connection connection = DatabaseConnection.getConnection()) {
@@ -21,7 +22,7 @@ public class TaskDAO {
 
             while (resultSet.next()) {
                 Task task = new Task();
-                task.setId(resultSet.getInt("id"));
+                task.setId(resultSet.getLong("id"));
                 task.setTask(resultSet.getString("description"));
                 task.setCompleted(resultSet.getBoolean("completed"));
                 tasks.add(task);
@@ -32,7 +33,9 @@ public class TaskDAO {
         return tasks;
     }
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public void addTask(String description) {
+        
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "INSERT INTO tasks (description) VALUES (?)";
             PreparedStatement statement = connection.prepareStatement(query);
@@ -42,6 +45,8 @@ public class TaskDAO {
             e.printStackTrace();
         }
     }
+    
+    @SuppressWarnings("CallToPrintStackTrace")
 
     public void updateTask(int id, boolean completed) {
         try (Connection connection = DatabaseConnection.getConnection()) {
@@ -55,6 +60,7 @@ public class TaskDAO {
         }
     }
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public void deleteTask(int id) {
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "DELETE FROM tasks WHERE id = ?";

@@ -13,8 +13,11 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id; 
 	private String task; 
-	private boolean completed; 
-
+	private boolean completed;
+	
+	public Task() {
+	}
+	
 	public Task(String task, boolean completed) { 
 		this.task = task; 
 		this.completed = completed; 

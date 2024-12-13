@@ -1,4 +1,4 @@
-package org.factoriaf5.proyecto;
+package org.factoriaf5.proyecto.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +20,6 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getConnection'");
     }
 }

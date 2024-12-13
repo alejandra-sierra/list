@@ -1,4 +1,4 @@
-package org.factoriaf5.proyecto;
+package org.factoriaf5.proyecto.connection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

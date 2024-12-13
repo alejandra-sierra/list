@@ -1,4 +1,4 @@
-package org.factoriaf5.proyecto;
+package org.factoriaf5.proyecto.connection;
 import java.io.IOException;
 import java.util.List;
 

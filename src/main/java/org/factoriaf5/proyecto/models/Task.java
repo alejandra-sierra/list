@@ -16,13 +16,17 @@ public class Task {
 	private boolean completed; 
 
 	public Task() { 
-		this.task = task; 
-		this.completed = completed; 
 	} 
+	
+	public Task(String task, boolean completed) { 
+        this.task = task; 
+        this.completed = completed; 
+    }
+
 	public Long getId() { 
 		return id; 
 	} 
-	public void setId(int id) { 
+	public void setId(Long id) { 
 		this.id = id; 
 	} 
 	public String getTask() { 

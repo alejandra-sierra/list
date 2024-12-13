@@ -15,14 +15,14 @@ public class Task {
 	private String task; 
 	private boolean completed; 
 
-	public Task(String task, boolean completed) { 
+	public Task() { 
 		this.task = task; 
 		this.completed = completed; 
 	} 
 	public Long getId() { 
 		return id; 
 	} 
-	public void setId(Long id) { 
+	public void setId(int id) { 
 		this.id = id; 
 	} 
 	public String getTask() { 

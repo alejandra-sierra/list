@@ -18,4 +18,9 @@ public class DatabaseConnection {
             System.out.println("Error connecting to database: " + e.getMessage());
         }
     }
+
+    public static Connection getConnection() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getConnection'");
+    }
 }
